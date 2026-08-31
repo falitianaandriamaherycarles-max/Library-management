@@ -1,0 +1,16 @@
+git:latest
+workflow-aggregator:latest
+maven-plugin:latest
+jacoco:latest
+htmlpublisher:latest
+email-ext:latest
+docker-workflow:latest
+pipeline-utility-steps:latest
+slack:latest
+blueocean:latest
+github:latest
+github-branch-source:latest
+pipeline-stage-view:latest
+build-timeout:latest
+timestamper:latest
+ws-cleanup:latest

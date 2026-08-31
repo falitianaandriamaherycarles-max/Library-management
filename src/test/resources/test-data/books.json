@@ -1,0 +1,47 @@
+[
+  {
+    "id": "test-1",
+    "title": "Clean Code",
+    "author": "Robert Martin",
+    "isbn": "978-0132350884",
+    "available": true,
+    "publicationYear": 2008,
+    "description": "A handbook of agile software craftsmanship"
+  },
+  {
+    "id": "test-2",
+    "title": "The Pragmatic Programmer",
+    "author": "Andrew Hunt",
+    "isbn": "978-0201616224",
+    "available": true,
+    "publicationYear": 1999,
+    "description": "From journeyman to master"
+  },
+  {
+    "id": "test-3",
+    "title": "Design Patterns",
+    "author": "Erich Gamma",
+    "isbn": "978-0201633610",
+    "available": false,
+    "publicationYear": 1994,
+    "description": "Elements of Reusable Object-Oriented Software"
+  },
+  {
+    "id": "test-4",
+    "title": "Code Complete",
+    "author": "Steve McConnell",
+    "isbn": "978-0735619678",
+    "available": true,
+    "publicationYear": 2004,
+    "description": "A practical handbook of software construction"
+  },
+  {
+    "id": "test-5",
+    "title": "Refactoring",
+    "author": "Martin Fowler",
+    "isbn": "978-0201485677",
+    "available": true,
+    "publicationYear": 1999,
+    "description": "Improving the design of existing code"
+  }
+]
