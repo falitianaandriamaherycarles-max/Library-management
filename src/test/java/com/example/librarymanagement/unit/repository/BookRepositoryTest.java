@@ -201,7 +201,7 @@ public class BookRepositoryTest {
         var stats = repository.getStats();
 
         // Then
-        assertThat(stats).containsEntry("totalBooks", 2L);
+        assertThat(stats).containsEntry("totalBooks", 2);
         assertThat(stats).containsEntry("availableBooks", 1L);
         assertThat(stats).containsEntry("borrowedBooks", 1L);
     }

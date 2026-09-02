@@ -26,11 +26,11 @@ public class LibraryManagementApplication {
             try {
                 // Vérifier si la base est vide
                 if (libraryService.getTotalBooks() == 0) {
-                    Book book1 = new Book(null, "Clean Code", "Robert Martin", "978-0132350884", 2008);
-                    Book book2 = new Book(null, "The Pragmatic Programmer", "Andrew Hunt", "978-0201616224", 1999);
-                    Book book3 = new Book(null, "Design Patterns", "Erich Gamma", "978-0201633610", 1994);
-                    Book book4 = new Book(null, "Code Complete", "Steve McConnell", "978-0735619678", 2004);
-                    Book book5 = new Book(null, "Refactoring", "Martin Fowler", "978-0201485677", 1999);
+                    Book book1 = new Book(null, "Clean Code", "Robert Martin", "9780132350884", 2008);
+                    Book book2 = new Book(null, "The Pragmatic Programmer", "Andrew Hunt", "9780201616224", 1999);
+                    Book book3 = new Book(null, "Design Patterns", "Erich Gamma", "9780201633610", 1994);
+                    Book book4 = new Book(null, "Code Complete", "Steve McConnell", "9780735619678", 2004);
+                    Book book5 = new Book(null, "Refactoring", "Martin Fowler", "9780201485677", 1999);
 
                     libraryService.addBook(book1);
                     libraryService.addBook(book2);

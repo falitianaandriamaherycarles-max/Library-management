@@ -43,7 +43,7 @@ public class ValidationService {
         if (author.length() > 100) {
             throw new IllegalArgumentException("Book author cannot exceed 100 characters");
         }
-        if (!author.matches("^[\\p{L}\\s\\-']+$")) {
+        if (!author.matches("^[a-zA-Z0-9\\s\\-.']+$")) {  // Ajout de 0-9
             throw new IllegalArgumentException("Book author contains invalid characters");
         }
     }
