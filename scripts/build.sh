@@ -31,7 +31,7 @@ log_section() {
 log_section "Checking Prerequisites"
 
 if ! command -v mvn &> /dev/null; then
-    log_error "Maven is not installed"
+    log_error "Maven  is not installed"
     exit 1
 fi
 
