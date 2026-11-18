@@ -15,6 +15,9 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.mock;
 
 public class LibraryServiceIntegrationTest {
 
@@ -34,7 +37,7 @@ public class LibraryServiceIntegrationTest {
     @Test
     void shouldAddAndRetrieveBook() {
         // Given
-        Book book = new Book(null, "Test Book", "Test Author", "978-0132350884", 2022);
+        Book book = new Book(null, "Test Book", "Test Author", "9780132350884", 2022);
 
         // When
         Book savedBook = libraryService.addBook(book);
@@ -50,7 +53,7 @@ public class LibraryServiceIntegrationTest {
     @Test
     void shouldNotAddDuplicateBook() {
         // Given
-        Book book = new Book(null, "Test Book", "Test Author", "978-0132350884", 2022);
+        Book book = new Book(null, "Test Book", "Test Author", "9780132350884", 2022);
         libraryService.addBook(book);
 
         // When/Then
@@ -61,7 +64,7 @@ public class LibraryServiceIntegrationTest {
     @Test
     void shouldBorrowAndReturnBook() {
         // Given
-        Book book = new Book(null, "Test Book", "Test Author", "978-0132350884", 2022);
+        Book book = new Book(null, "Test Book", "Test Author", "9780132350884", 2022);
         Book savedBook = libraryService.addBook(book);
 
         // When - Borrow
@@ -88,7 +91,7 @@ public class LibraryServiceIntegrationTest {
     @Test
     void shouldThrowExceptionWhenBorrowingAlreadyBorrowedBook() {
         // Given
-        Book book = new Book(null, "Test Book", "Test Author", "978-0132350884", 2022);
+        Book book = new Book(null, "Test Book", "Test Author", "9780132350884", 2022);
         Book savedBook = libraryService.addBook(book);
         libraryService.borrowBook(savedBook.getId());
 
@@ -100,9 +103,9 @@ public class LibraryServiceIntegrationTest {
     @Test
     void shouldSearchBooks() {
         // Given
-        Book book1 = new Book(null, "Clean Code", "Robert Martin", "978-0132350884", 2008);
-        Book book2 = new Book(null, "The Pragmatic Programmer", "Andrew Hunt", "978-0201616224", 1999);
-        Book book3 = new Book(null, "Design Patterns", "Erich Gamma", "978-0201633610", 1994);
+        Book book1 = new Book(null, "Clean Code", "Robert Martin", "9780132350884", 2008);
+        Book book2 = new Book(null, "The Pragmatic Programmer", "Andrew Hunt", "9780201616224", 1999);
+        Book book3 = new Book(null, "Design Patterns", "Erich Gamma", "9780201633610", 1994);
 
         libraryService.addBook(book1);
         libraryService.addBook(book2);
@@ -119,9 +122,9 @@ public class LibraryServiceIntegrationTest {
     @Test
     void shouldGetBooksByAuthor() {
         // Given
-        Book book1 = new Book(null, "Clean Code", "Robert Martin", "978-0132350884", 2008);
-        Book book2 = new Book(null, "Clean Architecture", "Robert Martin", "978-0134494166", 2017);
-        Book book3 = new Book(null, "Code Complete", "Steve McConnell", "978-0735619678", 2004);
+        Book book1 = new Book(null, "Clean Code", "Robert Martin", "9780132350884", 2008);
+        Book book2 = new Book(null, "Clean Architecture", "Robert Martin", "9780134494166", 2017);
+        Book book3 = new Book(null, "Code Complete", "Steve McConnell", "9780735619678", 2004);
 
         libraryService.addBook(book1);
         libraryService.addBook(book2);
@@ -137,9 +140,24 @@ public class LibraryServiceIntegrationTest {
 
     @Test
     void shouldMaintainConsistencyAfterMultipleOperations() {
-        // Given
+
+        String[] isbns = {
+                "9780132350884",  // Clean Code (valide)
+                "9780201616224",  // Pragmatic Programmer (valide)
+                "9780201633610",  // Design Patterns (valide)
+                "9780735619678",  // Code Complete (valide)
+                "9780134494166"   // Clean Architecture (valide)
+        };
+        String[] authors = {
+                "Robert Martin",
+                "Andrew Hunt",
+                "Erich Gamma",
+                "Steve McConnell",
+                "Martin Fowler"
+        };
+
         for (int i = 0; i < 5; i++) {
-            Book book = new Book(null, "Book " + i, "Author " + i, "978-013235088" + i, 2000 + i);
+            Book book = new Book(null, "Book " + (i + 1), authors[i], isbns[i], 2000 + i);
             libraryService.addBook(book);
         }
 
